@@ -1,32 +1,31 @@
-﻿using System;
-using Android.App;
-using Android.OS;
+﻿using Android.App;
 using Android.Widget;
-using Com.Crashlytics.Android;
+using Android.OS;
 using IO.Fabric.Sdk.Android;
+using Com.Crashlytics.Android;
 
 namespace SampleApp
 {
-    [Activity(Label = "SampleApp", MainLauncher = true)]
-    public class MainActivity : Activity
-    {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
+	[Activity(Label = "SampleApp", MainLauncher = true, Icon = "@mipmap/icon")]
+	public class MainActivity : Activity
+	{
+		protected override void OnCreate(Bundle savedInstanceState)
+		{
+			base.OnCreate(savedInstanceState);
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+			// Set our view from the "main" layout resource
+			SetContentView(Resource.Layout.Main);
 
-            Fabric.With(this, new Crashlytics());
+			// Init Crashlytics
+			Fabric.With(this, new Crashlytics());
 
-            var button = FindViewById<Button>(Resource.Id.button1);
+			// Get our button from the layout resource,
+			// and attach an event to it
+			Button button = FindViewById<Button>(Resource.Id.myButton);
 
-            button.Click += ButtonOnClick;
-        }
-
-        private void ButtonOnClick(object sender, EventArgs eventArgs)
-        {
-            throw new NotImplementedException("UHU!");
-        }
-    }
+			// Test a crash
+			button.Click += delegate { Crashlytics.Instance.Crash(); };
+		}
+	}
 }
+

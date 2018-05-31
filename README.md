@@ -1,35 +1,32 @@
 # Crashlytics.Droid
 
-Crashlytics binding project for Android
+Firebase Crashlytics binding project for Android
 
 ## Description
 
-Crashlytics does not support Xamarin.Android nor does it provides a binding project that we can use with our project.
+Firebase Crashlytics does not support Xamarin.Android nor does it provides a binding project that we can use with our project.
 
-I've developed this binding project trying to solve this problem.
-
-Any help is appreciated!
+Thanks to [Alexandre Chohfi](https://github.com/azchohfi) for the base implementation of Fabric Crashlytics.
 
 PS:
-The JAR files(extracted form the AAR files) are downloaded from the official Fabric's Maven (https://maven.fabric.io/public), using a little PowerShell script (Crashlytics.Droid\Jars\get-dependencies.ps1)
+The JAR files(extracted form the AAR files) are downloaded from [Maven](https://mvnrepository.com/artifact/com.crashlytics.sdk.android), 
+Simply download the 5 AAR from maven and extract the classes.jar from each and rename them.
 
 ## Download
 
-NuGet: [![NuGet Badge](https://chohfi.visualstudio.com/_apis/public/build/definitions/642271bf-04a0-4044-8524-834575f246e0/10/badge)](https://www.nuget.org/packages/Crashlytics.Droid.Binding/)
-
-MyGet: [https://www.myget.org/F/azchohfi/api/v3/index.json](https://www.myget.org/F/azchohfi/api/v3/index.json)
+Not available yet.
 
 ## How to use
 
-Download the source, compile the binding project.
-Add this to your manifest file (inside your application tag, inside your manifest tag):
+Create a firebase project and enable Crashlytics
+Documentation on the setup of firebase project and native implementation is available [here](https://firebase.google.com/docs/crashlytics/get-started).
 
-	<meta-data android:name="io.fabric.ApiKey" android:value="[YOUR-API-KEY]" />
+When the setup of Firebase Crashlytics is done. Download the Google-Service.json from firebase and add it at the root of the Android App and set the build action to GoogleServiceJson.
 
+Download the source, compile the binding project or use the nuget package.
+Make sure to also add the Xamarin.Firebase.Core nuget package to the solution. You can find it [here](https://www.nuget.org/packages/Xamarin.Firebase.Core/)
 
-Replace the [YOUR-API-KEY] with your api key. (You can get it here: https://fabric.io/settings/organizations, select your organization, then click on the "API Key" button).
-
-One other thing you need, since there is nothing equivalent to the crashlytics build tool for Xamarin, is a string resource named 'com.crashlytics.android.build_id', with your build_id, equivalent to your manifest's "android:versionName", or anything you want actually.
+Since there is nothing equivalent to the crashlytics build tool for Xamarin, is a string resource named 'com.crashlytics.android.build_id', with your build_id, equivalent to your manifest's "android:versionName", or anything you want actually.
 
 So add this to the file named Resources\values\String.xml:
 
@@ -55,8 +52,3 @@ It's pretty strait forward.
 
 If you want, you can add a pre-build script to your project to get the manifest's "android:versionName" and set it right into the String.xml file, but that's up to you.
 
-## Note
-
-This WORKS, but it won't create the project at Fabric's site, so you need to download Android Studio, download Fabric's Plugin, and follow the whole proccess of creating a Fabric's app inside Android Studio. ->Remember to use the exact same package name so the crashes sent to crashlytics actually report back to you.<-
-
-It's a PITA, but it's the only way I've found to create the project at Fabric's site.
