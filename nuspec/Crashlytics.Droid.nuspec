@@ -9,7 +9,7 @@
     <licenseUrl>https://github.com/nventive/Crashlytics.Droid/blob/master/LICENSE</licenseUrl> 
     <projectUrl>https://github.com/nventive/Crashlytics.Droid</projectUrl> 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Android binding package for Fabric.IO's Crashlytics. For more information, follow this description: https://github.com/nventive/Crashlytics.Droid/blob/master/README.md. Forked from https://github.com/azchohfi/Crashlytics.Droid</description>
+    <description>Android binding package for Firebase Crashlytics. For more information, follow this description: https://github.com/nventive/Crashlytics.Droid/blob/master/README.md. Forked from https://github.com/azchohfi/Crashlytics.Droid</description>
     <tags>crashlytics android droid xamarin fabric fabricio io</tags>
 	<iconUrl>https://raw.githubusercontent.com/nventive/Crashlytics.Droid/master/nuspec/icon.png</iconUrl>
   </metadata>
