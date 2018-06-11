@@ -1,6 +1,6 @@
 # Crashlytics.Droid
 
-This binding provide support for Fabric Crashlytics and Firebase Crashlytics (Firebase is the prefered and easiest way to make this work).
+This binding provides support for Fabric Crashlytics and Firebase Crashlytics (Firebase is the preferred and easiest way to make this work).
 
 ## Description
 
@@ -31,7 +31,7 @@ Add a meta data
 <meta-data android:name="io.fabric.ApiKey" android:value="[YOUR-API-KEY]" />
 ```
 
-or the prefered way in the Assembly info for environment control
+or the preferred way in the Assembly info for environment control
 
 ``` csharp
 #if PRODUCTION
@@ -99,6 +99,6 @@ It's pretty strait forward.
 If you want, you can add a pre-build script to your project to get the manifest's "android:versionName" and set it right into the String.xml file, but that's up to you.
 
 ## Known Issues
-The targeted Xamarin.Android project platform needs to be of Android 8.0 otherwise the application is not able to initialize with firebase.
+The Xamarin.Android project needs to target API Level 26 (Android 8.0) to properly initialize with Firebase.
 When using Fabric, the project needs to be created with a native project.
 
