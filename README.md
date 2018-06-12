@@ -98,6 +98,28 @@ It's pretty strait forward.
 
 If you want, you can add a pre-build script to your project to get the manifest's "android:versionName" and set it right into the String.xml file, but that's up to you.
 
+### Use with multi environment setup 
+
+To use with multiple envrionment you can use this setup
+
+First of a Config folder at the root of the solution, containing a Dev and Production folder.
+The in the csproj you can add this lines
+
+``` csharp
+<GoogleServicesJson Include="..\Config\Dev\google-services.json" Condition="'$(AppEnvironment)'!='Production'&&'$(AppEnvironment)'!='Staging'">
+    <Link>google-services.json</Link>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+</GoogleServicesJson>
+<GoogleServicesJson Include="..\Config\Staging\google-services.json" Condition="'$(AppEnvironment)'=='Staging'">
+    <Link>google-services.json</Link>
+	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+</GoogleServicesJson>
+<GoogleServicesJson Include="..\Config\Prod\google-services.json" Condition="'$(AppEnvironment)'=='Production'">
+    <Link>google-services.json</Link>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+</GoogleServicesJson>
+```
+
 ## Known Issues
 The Xamarin.Android project needs to target API Level 26 (Android 8.0) to properly initialize with Firebase.
 When using Fabric, the project needs to be created with a native project.
